@@ -1,5 +1,8 @@
+import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
+import { Notification } from 'components/Notification/Notification';
+import { Section } from 'components/Section/Section';
+import { Statisticks } from 'components/Statisticks/Statisticks';
 import React from 'react';
-import { Statisticks } from './Statisticks/Statisticks';
 
 class Counter extends React.Component {
   state = {
@@ -7,7 +10,6 @@ class Counter extends React.Component {
     neutral: 0,
     bad: 0,
   };
-  percentage = 0;
   goodFeedback = () => {
     this.setState(p => {
       return { good: p.good + 1 };
@@ -35,36 +37,30 @@ class Counter extends React.Component {
 
   render() {
     this.total = this.countTotalFeedbacks.call(this);
-    this.percentage = this.countPositiveFeedbackPercentage.call(this);
+    this.positivePercentage = this.countPositiveFeedbackPercentage.call(this);
     return (
-      <div className="div">
-        <h2 className="h2">Please leave feedback</h2>
-        <div className="counter_controls">
-          <button type="button" onClick={this.goodFeedback}>
-            good
-          </button>
-          <button type="button" onClick={this.neutralFeedback}>
-            neutral
-          </button>
-          <button type="button" onClick={this.badFeedback}>
-            bad
-          </button>
-        </div>
-        <h2 className="h2">Statisticks</h2>
-        <div>
+      <>
+        <Section title={'Please leave feedback'}>
+          <FeedbackOptions
+            goodFeedback={this.goodFeedback}
+            neutralFeedback={this.neutralFeedback}
+            badFeedback={this.badFeedback}
+          />
+        </Section>
+        <Section title={'Statisticks'}>
           {this.total ? (
             <Statisticks
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
               total={this.total}
-              percentage={this.percentage}
+              positivePercentage={this.positivePercentage}
             ></Statisticks>
           ) : (
-            <h3>No feedback given </h3>
+            <Notification title={'There is no feedback'} />
           )}
-        </div>
-      </div>
+        </Section>
+      </>
     );
   }
 }
