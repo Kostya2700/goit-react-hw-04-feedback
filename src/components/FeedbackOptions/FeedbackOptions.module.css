@@ -1,0 +1,21 @@
+.btn_good,
+.btn_neutral,
+.btn_bad {
+  background: green;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: large;
+}
+.btn_good {
+  background: green;
+}
+.btn_neutral {
+  background: yellow;
+}
+.btn_bad {
+  background: red;
+}

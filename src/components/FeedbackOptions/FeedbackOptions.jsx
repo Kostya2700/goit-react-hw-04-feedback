@@ -1,18 +1,23 @@
 import React from 'react';
+import css from '../FeedbackOptions/FeedbackOptions.module.css';
 export const FeedbackOptions = ({
   goodFeedback,
   neutralFeedback,
   badFeedback,
 }) => {
   return (
-    <div className="counter_controls">
-      <button type="button" onClick={goodFeedback}>
+    <div>
+      <button type="button" className={css.btn_good} onClick={goodFeedback}>
         good
       </button>
-      <button type="button" onClick={neutralFeedback}>
+      <button
+        type="button"
+        className={css.btn_neutral}
+        onClick={neutralFeedback}
+      >
         neutral
       </button>
-      <button type="button" onClick={badFeedback}>
+      <button type="button" className={css.btn_bad} onClick={badFeedback}>
         bad
       </button>
     </div>
