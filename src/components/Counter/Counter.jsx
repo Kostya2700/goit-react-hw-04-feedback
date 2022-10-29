@@ -15,12 +15,6 @@ class Counter extends React.Component {
       [option]: prevState[option] + 1,
     }));
   };
-
-  //*  total Fn   //
-  countTotalFeedback = () => {
-    const { good, neutral, bad } = this.state;
-    return good + neutral + bad;
-  };
   countTotalFeedbacks() {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
