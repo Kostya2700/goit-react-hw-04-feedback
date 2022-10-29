@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import css from '../Section/Section.module.css';
 
 export const Section = ({ title, children }) => {
   return (
     <div className="feedback">
-      <h2 className="feedback__title">{title}</h2>
+      <h2 className={css.feedback_title}>{title}</h2>
       {children}
     </div>
   );
