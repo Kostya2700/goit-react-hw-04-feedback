@@ -5,7 +5,7 @@ export const Statisticks = ({
   good,
   neutral,
   bad,
-  total,
+  total = 0,
   positivePercentage = 0,
 }) => {
   return (
