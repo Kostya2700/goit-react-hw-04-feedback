@@ -7,15 +7,6 @@ export default function Counter() {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
-  const onGood = () => {
-    setGood(prevState => prevState + 1);
-  };
-  const onNeutral = () => {
-    setNeutral(prevState => prevState + 1);
-  };
-  const onBad = () => {
-    setBad(prevState => prevState + 1);
-  };
 
   const total = () => {
     return good + neutral + bad;
@@ -27,7 +18,11 @@ export default function Counter() {
   return (
     <>
       <Section title={'Please leave feedback'}>
-        <FeedbackOptions onGood={onGood} onNeutral={onNeutral} onBad={onBad} />
+        <FeedbackOptions
+          onGood={() => setGood(prevState => prevState + 1)}
+          onNeutral={() => setNeutral(prevState => prevState + 1)}
+          onBad={() => setBad(prevState => prevState + 1)}
+        />
       </Section>
       <Section title={'Statisticks'}>
         {total() ? (
