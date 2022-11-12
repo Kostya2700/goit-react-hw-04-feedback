@@ -14,15 +14,25 @@ export default function Counter() {
   const positivePercentage = () => {
     return Math.round((good / total()) * 100);
   };
-
+  const onLeaveFeedback = options => {
+    switch (options) {
+      case 'good':
+        setGood(prevState => prevState + 1);
+        break;
+      case 'neutral':
+        setNeutral(prevState => prevState + 1);
+        break;
+      case 'bad':
+        setBad(prevState => prevState + 1);
+        break;
+      default:
+        return;
+    }
+  };
   return (
     <>
       <Section title={'Please leave feedback'}>
-        <FeedbackOptions
-          onGood={() => setGood(prevState => prevState + 1)}
-          onNeutral={() => setNeutral(prevState => prevState + 1)}
-          onBad={() => setBad(prevState => prevState + 1)}
-        />
+        <FeedbackOptions onLeaveFeedback={onLeaveFeedback} />
       </Section>
       <Section title={'Statisticks'}>
         {total() ? (
